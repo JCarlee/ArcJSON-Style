@@ -28,6 +28,7 @@ def break_values():
 
 
 def write_file():
+    pass
 
 
 master.filename = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=(("txt", "*.txt"), ("all files", "*.*"
