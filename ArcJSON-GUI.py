@@ -56,6 +56,7 @@ def unique_point():
     tab1_file.close()
 
 
+# =====Create Tab Structure=====
 tab_control = ttk.Notebook(window)
 
 # Define tabs
@@ -68,18 +69,12 @@ tab_control.add(tab1, text='Simple')
 tab_control.add(tab2, text='Unique')
 tab_control.add(tab3, text='Class Break')
 
-# =====Simple=====
-Label(tab1, text="Style").grid(row=0)
-Label(tab1, text="Size").grid(row=1)
-Label(tab1, text="Fill-R").grid(row=2)
-Label(tab1, text="Fill-G").grid(row=3)
-Label(tab1, text="Fill-B").grid(row=4)
-Label(tab1, text="Fill-Transp").grid(row=5)
-Label(tab1, text="Outline-R").grid(row=6)
-Label(tab1, text="Outline-G").grid(row=7)
-Label(tab1, text="Outline-B").grid(row=8)
-Label(tab1, text="OL-Transp").grid(row=9)
-Label(tab1, text="OL-Width").grid(row=10)
+
+# ===========Simple=============
+simple_point_names = ['Style', 'Size', 'Fill-R', 'Fill-G', 'Fill-B', 'Fill-Transp', 'Outline-R', 'Outline-G',
+                      'Outline-B', 'OL-Transp', 'OL-Width']
+for i in simple_point_names:
+    Label(tab1, text=i).grid(row=simple_point_names.index(i))
 
 s1 = Entry(tab1)
 s2 = Entry(tab1)
@@ -105,9 +100,9 @@ s9.grid(row=8, column=1, sticky=W + E)
 s10.grid(row=9, column=1, sticky=W + E)
 s11.grid(row=10, column=1, sticky=W + E)
 
-Button(tab1, text='Save', command=unique_point).grid(row=22, column=1, sticky=W, pady=4)
+Button(tab1, text='Save', command=unique_point).grid(row=11, column=1, sticky=W, pady=4)
 
-# =====Unique=====
+# ===========Unique===========
 Label(tab2, text="Style").grid(row=0)
 Label(tab2, text="Size").grid(row=1)
 Label(tab2, text="Fill-R").grid(row=2)
@@ -140,13 +135,6 @@ u7.grid(row=6, column=1, sticky=W + E)
 u8.grid(row=7, column=1, sticky=W + E)
 u9.grid(row=8, column=1, sticky=W + E)
 u10.grid(row=9, column=1, sticky=W + E)
-
-
-lbl2 = Label(tab2, text='label2')
-lbl2.grid(column=0, row=0)
-
-lbl3 = Label(tab3, text='label3')
-lbl3.grid(column=0, row=0)
 
 tab_control.pack(expand=1, fill='both')
 
