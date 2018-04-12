@@ -35,7 +35,7 @@ def simple_point():
                 "xoffset": 0,
                 "yoffset": 0,
                 "size": {4},
-                "style": "{5}",
+                "style": "esriSMS{5}",
                 "outline": {{
                   "type": "esriSLS",
                   "color": [
@@ -70,7 +70,7 @@ def simple_line():
         {3}
       ],
       "width": {4},
-      "style": "{5}"
+      "style": "esriSLS{5}"
     }}
   }}
 }}'''.format(line3.get(), line4.get(), line5.get(), line6.get(), line2.get(), line1.get()))
@@ -103,7 +103,7 @@ def simple_polygon():
         "width": {8},
         "style": "{9}"
       }},
-      "style": "{10}"
+      "style": "esriSFS{10}"
     }}
   }}
 }}'''.format(poly2.get(), poly3.get(), poly4.get(), poly5.get(), poly8.get(), poly9.get(), poly10.get(), poly11.get(),
@@ -125,15 +125,14 @@ tab_control.add(tab2, text='Line')
 tab_control.add(tab3, text='Polygon')
 
 
-# ===========Point=============
+# ===========Point===========
 for i in simple_point_names:
     Label(tab1, text=i).grid(row=simple_point_names.index(i))
 
-point1_options = ["esriSMSCircle", "esriSMSCross", "esriSMSDiamond", "esriSMSSquare", "esriSMSX"]
+point1_options = ['Circle', 'Cross', 'Diamond', 'Square', 'X']
 
-# point1 = Entry(tab1)  # Style
 point1 = ttk.Combobox(tab1, values=point1_options)
-point1.set("esriSMSCircle")
+point1.set('Circle')
 point2 = Entry(tab1)  # Size
 point3 = Entry(tab1)  # Fill-R
 point4 = Entry(tab1)  # Fill-G
@@ -156,7 +155,11 @@ Button(tab1, text='Save', command=simple_point).grid(row=11, column=1, sticky=W,
 for i in simple_line_names:
     Label(tab2, text=i).grid(row=simple_line_names.index(i))
 
-line1 = Entry(tab2)
+line1_options = ['Solid', 'DashDot', 'DashDotDot', 'Dot', 'LongDash', 'LongDashDot', 'ShortDash', 'ShortDashDot',
+                 'ShortDashDot', 'ShortDashDotDot', 'ShortDot']
+
+line1 = ttk.Combobox(tab2, values=line1_options)
+line1.set('Solid')
 line2 = Entry(tab2)
 line3 = Entry(tab2)
 line4 = Entry(tab2)
@@ -174,12 +177,17 @@ Button(tab2, text='Save', command=simple_line).grid(row=6, column=1, sticky=W, p
 for i in simple_polygon_names:
     Label(tab3, text=i).grid(row=simple_polygon_names.index(i))
 
-poly1 = Entry(tab3)
+poly1_options = ['Solid', 'Vertical', 'BackwardDiagonal', 'Cross', 'DiagnolCross', 'ForwardDiagnonal', 'Horizontal',
+                 'None']
+
+poly1 = ttk.Combobox(tab3, values=poly1_options)
+poly1.set('Solid')
 poly2 = Entry(tab3)
 poly3 = Entry(tab3)
 poly4 = Entry(tab3)
 poly5 = Entry(tab3)
-poly6 = Entry(tab3)
+poly6 = ttk.Combobox(tab3, values=line1_options)
+poly6.set('Solid')
 poly7 = Entry(tab3)
 poly8 = Entry(tab3)
 poly9 = Entry(tab3)
@@ -191,7 +199,7 @@ poly_list = [poly1, poly2, poly3, poly4, poly5, poly6, poly7, poly8, poly9, poly
 for i in poly_list:
     i.grid(row=poly_list.index(i), column=1, sticky=W + E)
 
-Button(tab3, text='Save', command=simple_polygon).grid(row=10, column=1, sticky=W, pady=4)
+Button(tab3, text='Save', command=simple_polygon).grid(row=11, column=1, sticky=W, pady=4)
 
 tab_control.pack(expand=1, fill='both')
 
