@@ -1,13 +1,26 @@
+"""
+ArcJSON-GUI.py
+
+This script provides a graphical user interface (GUI) using Tkinter to create ArcJSON styling for points, lines,
+and polygons. Users can input style parameters and save the generated JSON configuration files for use in GIS
+applications.
+
+Features:
+- Create simple styles for points, lines, and polygons.
+- Save the generated JSON configuration to a file.
+- User-friendly interface with tabs for different geometry types.
+
+Author: John Carlee
+"""
 from tkinter import *
-
-from tkinter import ttk
 from tkinter import filedialog
+from tkinter import ttk
 
-# Github example
-
+# GitHub example
 window = Tk()
 
-window.title("ArcJSON")  # Cosmetic window title
+# Cosmetic window title
+window.title("ArcJSON")
 
 simple_point_names = ['Style', 'Size', 'Fill-R', 'Fill-G', 'Fill-B', 'Fill-T', 'Line-R', 'Line-G',
                       'Line-B', 'Line-T', 'OL-Width']
@@ -19,6 +32,12 @@ simple_polygon_names = ['Fill Style', 'Fill-R', 'Fill-G', 'Fill-B', 'Fill-T', 'L
 
 
 def simple_point():
+    """
+    Generates and saves a JSON configuration file for point styling.
+
+    The function collects user inputs for point style parameters such as size, fill color, and outline color,
+    and writes them into a JSON file in the ArcJSON format.
+    """
     tab1.filename = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=(("txt", "*.txt"), ("all files",
                                                                                                         "*.*")))
     tab1_file = open(tab1.filename, 'w')
@@ -57,6 +76,12 @@ def simple_point():
 
 
 def simple_line():
+    """
+    Generates and saves a JSON configuration file for line styling.
+
+    The function collects user inputs for line style parameters such as width, color, and style,
+    and writes them into a JSON file in the ArcJSON format.
+    """
     tab2.filename = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=(("txt", "*.txt"), ("all files",
                                                                                                         "*.*")))
     tab2_file = open(tab2.filename, 'w')
@@ -80,6 +105,12 @@ def simple_line():
 
 
 def simple_polygon():
+    """
+    Generates and saves a JSON configuration file for polygon styling.
+
+    The function collects user inputs for polygon style parameters such as fill color, outline color,
+    and line style, and writes them into a JSON file in the ArcJSON format.
+    """
     tab3.filename = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=(("txt", "*.txt"), ("all files",
                                                                                                         "*.*")))
     tab3_file = open(tab3.filename, 'w')
@@ -125,7 +156,6 @@ tab3 = ttk.Frame(tab_control)
 tab_control.add(tab1, text='Point')
 tab_control.add(tab2, text='Line')
 tab_control.add(tab3, text='Polygon')
-
 
 # ===========Point===========
 for i in simple_point_names:
@@ -179,7 +209,7 @@ Button(tab2, text='Save', command=simple_line).grid(row=6, column=1, sticky=W, p
 for i in simple_polygon_names:
     Label(tab3, text=i).grid(row=simple_polygon_names.index(i))
 
-poly1_options = ['Solid', 'Vertical', 'BackwardDiagonal', 'Cross', 'DiagnolCross', 'ForwardDiagnonal', 'Horizontal',
+poly1_options = ['Solid', 'Vertical', 'BackwardDiagonal', 'Cross', 'DiagonalCross', 'ForwardDiagonal', 'Horizontal',
                  'None']
 
 poly1 = ttk.Combobox(tab3, values=poly1_options)
